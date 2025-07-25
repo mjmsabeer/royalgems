@@ -36,8 +36,8 @@ const productSchema = new mongoose.Schema(
       type: String,
     },
     weights: {
-      type: Number
-      // required: true,
+      type: [String],
+      required: true,
     },
     colors: {
       type: [String],

@@ -50,12 +50,12 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/collections/all?origin=Sapphire" className="hover:text-gray-500 transition-colors">
+              <Link to="/collections/all?variety=Sapphire" className="hover:text-gray-500 transition-colors">
                 Sapphire Collection
               </Link>
             </li>
             <li>
-              <Link to="/collections/all?origin=Other" className="hover:text-gray-500 transition-colors">
+              <Link to="/collections/all?variety=Other" className="hover:text-gray-500 transition-colors">
                 Other Collection
               </Link>
             </li>

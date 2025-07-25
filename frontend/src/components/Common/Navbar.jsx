@@ -123,7 +123,7 @@ const Navbar = () => {
               Spinal
             </Link>
             <Link
-              to="/collections/all?variety=Sapphire"
+              to="/collections/all?variety=Tsavorite"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >

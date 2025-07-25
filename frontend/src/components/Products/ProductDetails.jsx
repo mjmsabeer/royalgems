@@ -37,6 +37,13 @@ const ProductDetails = ({ productId }) => {
     }
   }, [selectedProduct]);
 
+  // // In ProductDetails.jsx, add this useEffect:
+  // useEffect(() => {
+  //   console.log('Product data:', selectedProduct);
+  //   console.log('Weights:', selectedProduct?.weights);
+  //   console.log('Colors:', selectedProduct?.colors);
+  // }, [selectedProduct]);
+
   const handleQuantityChange = (action) => {
     if (action === "plus") setQuantity((prev) => prev + 1);
     if (action === "minus" && quantity > 1) setQuantity((prev) => prev - 1);
@@ -165,7 +172,7 @@ const ProductDetails = ({ productId }) => {
               <div className="mb-4">
                 <p className="text-gray-700">Weight:</p>
                 <div className="flex gap-2 mt-2">
-                  {selectedProduct.weights?.map((weight) =>(
+                  {selectedProduct.weights?.map((weight) => (
                     <button
                       key={weight}
                       onClick={() => setSelectedWeight(weight)}
