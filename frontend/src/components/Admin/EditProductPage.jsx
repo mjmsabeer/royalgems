@@ -15,6 +15,14 @@ const EditProductPage = () => {
     (state) => state.products
   );
 
+  // Add a function to remove images
+const handleRemoveImage = (indexToRemove) => {
+  setProductData((prevData) => ({
+    ...prevData,
+    images: prevData.images.filter((_, index) => index !== indexToRemove),
+  }));
+};
+
   const [productData, setProductData] = useState({
     name: "",
     description: "",
@@ -188,23 +196,40 @@ const EditProductPage = () => {
           />
         </div>
 
-        {/* Image Upload */}
+{/* Update the image display section in your EditProductPage.jsx */}
         <div className="mb-6">
-          <label className="block font-semibold mb-2">Upload Image</label>
-          <input type="file" onChange={handleImageUpload} />
+          <label className="block font-semibold mb-2">Product Images</label>
+          
+          {/* Upload new image */}
+          <input type="file" onChange={handleImageUpload} className="mb-4" />
           {uploading && <p>Uploading image...</p>}
-          <div className="flex gap-4 mt-4">
+          
+          {/* Display existing images with remove option */}
+          <div className="flex gap-4 mt-4 flex-wrap">
             {productData.images.map((image, index) => (
-              <div key={index}>
+              <div key={index} className="relative">
                 <img
                   src={image.url}
                   alt={image.altText || "Product Image"}
                   className="w-20 h-20 object-cover rounded-md shadow-md"
                 />
+                {/* Remove button */}
+                <button
+                  type="button"
+                  onClick={() => handleRemoveImage(index)}
+                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600"
+                >
+                  ×
+                </button>
               </div>
             ))}
           </div>
+          
+          {productData.images.length === 0 && (
+            <p className="text-gray-500 mt-4">No images uploaded</p>
+          )}
         </div>
+
         <button
           type="submit"
           className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors"
